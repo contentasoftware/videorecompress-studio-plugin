@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "videorecompress-studio": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@contentasoft/videorecompress-mcp@1.0.0"
+      ]
+    }
+  }
+}

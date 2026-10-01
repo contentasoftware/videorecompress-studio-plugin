@@ -1,0 +1,23 @@
+{
+  "name": "videorecompress-studio",
+  "displayName": "VideoRecompress Studio",
+  "version": "1.0.0",
+  "description": "VideoRecompress Studio on your Windows PC from Claude: shrinking video files with H.265/AV1 and GPU encoding, one file or a whole folder. Runs locally on your files.",
+  "author": {
+    "name": "ContentaSoft AB",
+    "url": "https://www.contenta-software.com/"
+  },
+  "homepage": "https://www.contenta-software.com/videorecompress/",
+  "repository": "https://github.com/ContentaSoft/videorecompress-studio-plugin",
+  "license": "MIT",
+  "keywords": [
+    "windows",
+    "batch",
+    "mcp",
+    "shrinking",
+    "video",
+    "files",
+    "with",
+    "H.265"
+  ]
+}
