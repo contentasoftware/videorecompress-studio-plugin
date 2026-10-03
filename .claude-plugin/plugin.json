@@ -1,7 +1,7 @@
 {
   "name": "videorecompress-studio",
   "displayName": "VideoRecompress Studio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "VideoRecompress Studio on your Windows PC from your AI agent: shrinking video files with H.265/AV1 and GPU encoding, one file or a whole folder. Runs locally on your files.",
   "author": {
     "name": "ContentaSoft AB",

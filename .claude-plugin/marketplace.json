@@ -1,0 +1,26 @@
+{
+  "name": "videorecompress-studio-plugin",
+  "owner": {
+    "name": "ContentaSoft AB",
+    "url": "https://www.contenta-software.com/"
+  },
+  "description": "VideoRecompress Studio for AI agents on Windows: shrinking video files with H.265/AV1 and GPU encoding, one file or a whole folder.",
+  "plugins": [
+    {
+      "name": "videorecompress-studio",
+      "source": "./",
+      "description": "VideoRecompress Studio on your Windows PC from your AI agent: shrinking video files with H.265/AV1 and GPU encoding, one file or a whole folder. Runs locally on your files.",
+      "version": "1.0.1",
+      "tags": [
+        "windows",
+        "batch",
+        "mcp",
+        "shrinking",
+        "video",
+        "files",
+        "with",
+        "H.265"
+      ]
+    }
+  ]
+}
