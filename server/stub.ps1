@@ -28,7 +28,7 @@ while ($null -ne ($line = $in.ReadLine())) {
       Reply $id ([ordered]@{
         protocolVersion = $v
         capabilities = [ordered]@{ tools = [ordered]@{ listChanged = $false } }
-        serverInfo = [ordered]@{ name = 'videorecompress-studio'; version = '1.0.1' }
+        serverInfo = [ordered]@{ name = 'videorecompress-studio'; version = '1.0.2' }
         instructions = 'VideoRecompress Studio is not installed on this computer. Call get_started for what to do.'
       })
     }
