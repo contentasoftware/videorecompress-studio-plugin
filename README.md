@@ -1,8 +1,21 @@
 # VideoRecompress Studio plugin
 
-Use **VideoRecompress Studio** from your AI agent on your Windows PC: shrinking video files with H.265/AV1 and GPU encoding, one file or a whole folder. The agent calls the app's tools
-on files on your computer; nothing is uploaded to the model provider or to ContentaSoft to do the work. It works
-with any agent that runs local MCP servers: Cursor, Claude Code, Codex, VS Code, Windsurf and others.
+Use **VideoRecompress Studio** from your AI agent on your Windows PC: shrinking video files with H.265/AV1 and GPU encoding, one file or a whole folder. You ask in plain words and the
+agent does the work on files on your computer. It works with any agent that runs local MCP servers: Cursor,
+Claude Code, Codex, VS Code, Windsurf and others.
+
+## Ask your agent
+
+- "Shrink the videos in my phone backup folder and tell me how much space I got back."
+- "Compress my drone footage, but test one clip first and show me the quality score."
+- "Make this video small enough to send on WhatsApp."
+
+VideoRecompress Studio also works without an agent: open it from the Start menu and work in its own window.
+
+## Price and trial
+
+- $79, a one-time purchase. No subscription needed. Prices: https://www.contenta-software.com/videorecompress/buy.php
+- The free trial has no end date: the first 10 files per PC are unrestricted, later ones are watermarked and cut at 10 minutes. `videorecompress status` shows how many free files are left; a batch spends one per file. Nothing stops working; a licence removes the limits.
 
 ## Install
 
@@ -37,7 +50,30 @@ Client-by-client instructions: https://www.npmjs.com/package/@contentasoft/video
   says whether it only reads files, writes new files, may overwrite files, or uses the internet.
 - **Skill** `contenta-video`: how and when the agent should use those tools and the `videorecompress` command line.
 
-## What runs and what is sent
+## For developers
+
+- Windows 10 and 11, 64-bit only. There is no macOS or Linux version.
+- `videorecompress` never waits for input or shows a dialog, so it runs unattended from Task Scheduler or a script.
+  To compress each new video saved to a folder while you are signed in, start `watch` at logon; it runs until you sign out or close its window:
+
+  ```
+  schtasks /create /tn "VideoRecompress Studio watch" /sc onlogon /tr "videorecompress watch --folder D:\Camera --preset phone_archive --output D:\Compressed"
+  ```
+- Every command takes `--json`: JSON on stdout, logs on stderr. `batch --json` prints one object per line, progress first; the last line is the summary, with `success`, `processed`, `failed` and `errors`.
+- Exit codes: 0 done · 1 general error · 2 invalid arguments · 4 recompression failed (in a batch the other files are still written) · 5 file or folder not found · 6 ffmpeg missing.
+- The full command reference is the skill: `skills/contenta-video/SKILL.md`.
+
+## Privacy
+
+- Videos are compressed on this PC. They are not uploaded, and compressing needs no internet connection.
+- The app sends usage statistics (which tools ran, which MCP client connected, trial state) and crash reports to
+  ContentaSoft, tagged with a hashed machine ID. They never contain your files; a crash report can contain a file
+  name, but folder paths are removed. To turn them off, open the app and
+  go to Settings, Privacy: Send usage statistics and crash reports. The same switch covers the command line and the
+  MCP server. On a PC where nobody opens the app, set `"allowUsageMetrics": false` in `%APPDATA%\VideoRecompressStudio\settings.json`.
+- Privacy policy, with the full list of what is sent: https://www.contenta-software.com/videorecompress/privacy.php
+
+## What runs
 
 - As a Claude plugin it runs `server/launch.cmd` from the plugin folder, which looks for `videorecompress.exe` in the app's
   install folder (`%LOCALAPPDATA%\Programs\VideoRecompressStudio`), on your `PATH` or in `Program Files`, and runs
@@ -46,9 +82,6 @@ Client-by-client instructions: https://www.npmjs.com/package/@contentasoft/video
   or, without Node.js, the Windows PowerShell stub `server/stub.ps1` serves one tool, `get_started`. Neither sends
   anything over the network.
 - The skill may only run the app's own command-line tool (`allowed-tools: Bash(videorecompress:*)`).
-- The app processes local files only. It sends anonymous usage telemetry (which tools ran, which MCP client
-  connected, trial state) to ContentaSoft; turn it off in the app's settings. Privacy policy: https://www.contenta-software.com/videorecompress/privacy.php
-- The free trial has no end date: the first 10 files per PC are unrestricted, later ones are watermarked and cut at 10 minutes. `videorecompress status` shows how many free files are left; a batch spends one per file. Nothing stops working; a licence removes the limits.
 
 ## License
 
