@@ -46,7 +46,7 @@ Client-by-client instructions: https://www.npmjs.com/package/@contentasoft/video
 
 ## What is included
 
-- **MCP server** `videorecompress-studio` with the tools `recompress_video`, `batch_recompress`, `analyze_video`, `estimate_savings`, `list_presets`. Each tool
+- **MCP server** `videorecompress-studio` with the tools `recompress_video`, `batch_recompress`, `get_file_info`, `estimate_savings`, `list_presets`, `list_formats`, `get_license_status`, `analyze_video`. Each tool
   says whether it only reads files, writes new files, may overwrite files, or uses the internet.
 - **Skill** `contenta-video`: how and when the agent should use those tools and the `videorecompress` command line.
 
@@ -57,11 +57,18 @@ Client-by-client instructions: https://www.npmjs.com/package/@contentasoft/video
   To compress each new video saved to a folder while you are signed in, start `watch` at logon; it runs until you sign out or close its window:
 
   ```
-  schtasks /create /tn "VideoRecompress Studio watch" /sc onlogon /tr "videorecompress watch --folder D:\Camera --preset phone_archive --output D:\Compressed"
+  schtasks /create /tn "VideoRecompress Studio watch" /sc onlogon /tr "videorecompress watch D:\Camera -o D:\Compressed --preset phone_archive"
   ```
-- Every command takes `--json`: JSON on stdout, logs on stderr. `batch --json` prints one object per line, progress first; the last line is the summary, with `success`, `processed`, `failed` and `errors`.
-- Exit codes: 0 done · 1 general error · 2 invalid arguments · 4 recompression failed (in a batch the other files are still written) · 5 file or folder not found · 6 ffmpeg missing.
-- The full command reference is the skill: `skills/contenta-video/SKILL.md`.
+- Every command takes `--json` and prints one JSON object on stdout (logs go to stderr): `success`, `exitCode`, `error`, `warnings`, `errors` and `outputs`, plus the trial fields when they apply. Add `--progress` for one `{"type":"progress",...}` line per finished file before that object.
+- Exit codes: 0 done · 1 unexpected error · 2 invalid arguments · 3 input not found or unreadable · 4 some items failed (the others are written) · 5 nothing succeeded · 6 the licence or trial refused the run · 130 cancelled. The four ContentaSoft command lines share this table.
+- The skill (`skills/contenta-video/SKILL.md`) tells the agent which commands to use.
+
+## Full CLI and MCP reference
+
+Every `videorecompress` command, option and exit code, the JSON output and every MCP tool with its parameters:
+
+- Command line: https://github.com/brunojanvier77/ContentaSoft/blob/main/videorecompress/cli.md
+- MCP server: https://github.com/brunojanvier77/ContentaSoft/blob/main/videorecompress/mcp-server.md
 
 ## Privacy
 
