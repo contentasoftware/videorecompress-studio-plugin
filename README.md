@@ -46,7 +46,7 @@ Client-by-client instructions: https://www.npmjs.com/package/@contentasoft/video
 
 ## What is included
 
-- **MCP server** `videorecompress-studio` with the tools `recompress_video`, `batch_recompress`, `get_file_info`, `estimate_savings`, `list_presets`, `list_formats`, `get_license_status`, `analyze_video`. Each tool
+- **MCP server** `videorecompress-studio` with the tools `recompress_video`, `batch_recompress`, `get_file_info`, `estimate_savings`, `list_presets`, `list_formats`, `get_license_status`. Each tool
   says whether it only reads files, writes new files, may overwrite files, or uses the internet.
 - **Skill** `contenta-video`: how and when the agent should use those tools and the `videorecompress` command line.
 
