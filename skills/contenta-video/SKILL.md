@@ -1,7 +1,7 @@
 ---
 name: contenta-video
 description: Compress and re-encode video files with the VideoRecompress Studio CLI (videorecompress). Use when the user asks to shrink videos, convert to H.265/HEVC, AV1 or VP9, prepare videos for WhatsApp, Discord or email, archive phone, wedding, dashcam or screen recordings, batch-compress a folder, or watch a folder for new videos.
-allowed-tools: Bash(videorecompress *) PowerShell(videorecompress *) Bash(videorecompress.exe *) PowerShell(videorecompress.exe *)
+allowed-tools: Bash(videorecompress *) PowerShell(videorecompress *) Bash(videorecompress.exe *) PowerShell(videorecompress.exe *) mcp__plugin_videorecompress-studio_videorecompress-studio
 ---
 
 # VideoRecompress Studio (video compression)
