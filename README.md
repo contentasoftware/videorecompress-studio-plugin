@@ -1,5 +1,8 @@
 # VideoRecompress Studio plugin
 
+**Windows 10/11 only.** There is no Mac or Linux version: on a Mac or Linux machine the plugin installs, but its
+server cannot start.
+
 Use **VideoRecompress Studio** from your AI agent on your Windows PC: shrinking video files with H.265/AV1 and GPU encoding, one file or a whole folder. You ask in plain words and the
 agent does the work on files on your computer. It works with any agent that runs local MCP servers: Cursor,
 Claude Code, Codex, VS Code, Windsurf and others.
@@ -16,6 +19,8 @@ VideoRecompress Studio also works without an agent: open it from the Start menu 
 
 - $79, a one-time purchase. No subscription needed. Prices: https://www.contenta-software.com/videorecompress/buy.php
 - The free trial has no end date: the first 10 files per PC are unrestricted, later ones are watermarked and cut at 10 minutes. `videorecompress status` shows how many free files are left; a batch spends one per file. Nothing stops working; a licence removes the limits.
+- After buying, the licence key arrives by email. Enter it in VideoRecompress Studio's Register page, or run
+  `videorecompress register <email> <key>` in a terminal. The key does not need to go through the chat.
 
 ## Install
 
